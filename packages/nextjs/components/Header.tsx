@@ -105,8 +105,21 @@ export const Header = () => {
             <span className="text-xs">Ethereum dev stack</span>
           </div>
         </Link>
-        <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
-          <HeaderMenuLinks />
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="/events">Events</Link>
+          </li>
+          <li>
+            <Link href="/debug">Debug Contracts</Link>
+          </li>
+          <li>
+            <Link href="/blockexplorer">Block Explorer</Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
