@@ -1,5 +1,5 @@
 {
-  "installCommand": "yarn install",
+  "installCommand": "yarn install --ignore-scripts || yarn install",
   "buildCommand": "yarn build",
   "framework": "nextjs"
 }
