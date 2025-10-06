@@ -4,7 +4,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
-import { Bars3Icon, BugAntIcon, HomeIcon, CurrencyDollarIcon, SparklesIcon  } from "@heroicons/react/24/outline";
+import { Bars3Icon, BugAntIcon, HomeIcon, CurrencyDollarIcon, SparklesIcon, CalendarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
   DappConsoleButton,
   FaucetButton,
@@ -27,6 +27,11 @@ export const menuLinks: HeaderMenuLink[] = [
     icon: <HomeIcon className="h-4 w-4" />,
   },
   {
+    label: "Events",
+    href: "/events",
+    icon: <CalendarIcon className="h-4 w-4" />,
+  },
+  {
     label: "Oracle",
     href: "/oracle",
     icon: <CurrencyDollarIcon className="h-4 w-4" />,
@@ -40,6 +45,11 @@ export const menuLinks: HeaderMenuLink[] = [
     label: "Debug Contracts",
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Block Explorer",
+    href: "/blockexplorer",
+    icon: <MagnifyingGlassIcon className="h-4 w-4" />,
   },
 ];
 
@@ -117,19 +127,8 @@ export const Header = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/events">Events</Link>
-          </li>
-          <li>
-            <Link href="/debug">Debug Contracts</Link>
-          </li>
-          <li>
-            <Link href="/blockexplorer">Block Explorer</Link>
-          </li>
+        <ul className="menu menu-horizontal px-1 gap-2">
+          <HeaderMenuLinks />
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
