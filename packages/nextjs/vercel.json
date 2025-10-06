@@ -1,6 +1,5 @@
 {
   "installCommand": "yarn install",
   "buildCommand": "yarn build",
-  "framework": "nextjs",
-  "nodeVersion": "20.x"
+  "framework": "nextjs"
 }
