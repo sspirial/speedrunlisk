@@ -6,7 +6,8 @@ import { useActiveAccount } from "thirdweb/react";
 import { liskSepoliaThirdweb } from "~~/chains";
 import deployedContracts from "~~/contracts/deployedContracts";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
-import { thirdwebClient } from "~~/services/web3/thirdwebConfig";  // ✅ Use shared client
+import { thirdwebClient } from "~~/services/web3/thirdwebConfig";
+// ✅ Use shared client
 import { notification } from "~~/utils/scaffold-eth";
 
 export const SmartWalletDemo = () => {
@@ -41,7 +42,7 @@ export const SmartWalletDemo = () => {
     try {
       // Create thirdweb contract instance
       const nftContract = getContract({
-        client: thirdwebClient,  // ✅ Use shared client
+        client: thirdwebClient, // ✅ Use shared client
         chain: liskSepoliaThirdweb,
         address: nftAddress,
       });

@@ -16,9 +16,7 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   [chains.hardhat.id]: {
     color: "#b8af0c",
   },
-  ...(liskSepolia && typeof liskSepolia.id !== "undefined"
-    ? { [liskSepolia.id]: { color: "#E84D31" } }
-    : {}),
+  ...(liskSepolia && typeof liskSepolia.id !== "undefined" ? { [liskSepolia.id]: { color: "#E84D31" } } : {}),
   [chains.mainnet.id]: {
     color: "#ff8b9e",
   },

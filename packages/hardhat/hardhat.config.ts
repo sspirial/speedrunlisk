@@ -144,7 +144,7 @@ const config: HardhatUserConfig = {
   // configuration for harhdat-verify plugin
   etherscan: {
     apiKey: {
-      liskSepolia: process.env.ETHERSCAN_API_KEY || "YOUR_BLOCKSCOUT_API_KEY"
+      liskSepolia: process.env.ETHERSCAN_API_KEY || "YOUR_BLOCKSCOUT_API_KEY",
     },
     customChains: [
       {
@@ -152,15 +152,15 @@ const config: HardhatUserConfig = {
         chainId: 4202,
         urls: {
           apiURL: "https://sepolia-blockscout.lisk.com/api",
-          browserURL: "https://sepolia-blockscout.lisk.com"
-        }
-      }
-    ]
+          browserURL: "https://sepolia-blockscout.lisk.com",
+        },
+      },
+    ],
   },
   // configuration for etherscan-verify from hardhat-deploy plugin
   verify: {
     etherscan: {
-      apiKey: process.env.ETHERSCAN_API_KEY || "YOUR_BLOCKSCOUT_API_KEY"
+      apiKey: process.env.ETHERSCAN_API_KEY || "YOUR_BLOCKSCOUT_API_KEY",
     },
   },
   sourcify: {
