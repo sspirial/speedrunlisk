@@ -3,4 +3,15 @@
   "outputDirectory": "packages/nextjs/.next",
   "installCommand": "PYTHON=/usr/bin/python3.11 yarn install || yarn install --ignore-scripts",
   "framework": null
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "packages/nextjs/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "installCommand": "apt-get update && apt-get install -y python3-distutils && yarn install"
+      }
+    }
+  ]
 }
