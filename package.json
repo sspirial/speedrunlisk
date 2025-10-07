@@ -8,6 +8,10 @@
       "packages/nextjs"
     ]
   },
+  "resolutions": {
+    "node-gyp": "^10.2.0",
+    "gyp": "^0.16.0"
+  },
   "scripts": {
     "account": "yarn workspace @se-2/hardhat account",
     "chain": "yarn workspace @se-2/hardhat chain",
