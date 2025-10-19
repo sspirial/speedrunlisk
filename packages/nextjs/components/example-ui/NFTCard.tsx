@@ -21,7 +21,6 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
   const [isApproved, setIsApproved] = useState(false);
   const [isApproving, setIsApproving] = useState(false);
   const [ethPriceUSD, setEthPriceUSD] = useState<number>(0);
-  const [isLoadingPrice, setIsLoadingPrice] = useState(false);
 
   // Get PriceFeed contract info
   const { data: priceFeedContract } = useDeployedContractInfo("PriceFeed");
@@ -57,38 +56,33 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
     args: [owner as `0x${string}`, marketplaceAddress as `0x${string}`],
   });
 
-  // Fetch ETH price from oracle
-  const fetchEthPrice = async () => {
-    if (!priceFeedContract || typeof window === "undefined" || !window.ethereum) {
-      return;
-    }
-
-    try {
-      setIsLoadingPrice(true);
-
-      // Create ethers provider and contract
-      const provider = new ethers.providers.Web3Provider(window.ethereum as any);
-      const contract = new ethers.Contract(priceFeedContract.address, priceFeedContract.abi, provider);
-
-      // Wrap contract with RedStone data
-      const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
-        dataPackagesIds: ["ETH"],
-        authorizedSigners: getSignersForDataServiceId("redstone-main-demo"),
-      });
-
-      // Get ETH price
-      const priceData = await wrappedContract.getEthPrice();
-      const formattedPrice = Number(priceData) / 1e8; // Convert from 8 decimals
-      setEthPriceUSD(formattedPrice);
-    } catch (error) {
-      console.error("Error fetching ETH price:", error);
-    } finally {
-      setIsLoadingPrice(false);
-    }
-  };
-
   // Fetch price on mount and every 30 seconds
   useEffect(() => {
+    const fetchEthPrice = async () => {
+      if (!priceFeedContract || typeof window === "undefined" || !window.ethereum) {
+        return;
+      }
+
+      try {
+        // Create ethers provider and contract
+        const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+        const contract = new ethers.Contract(priceFeedContract.address, priceFeedContract.abi, provider);
+
+        // Wrap contract with RedStone data
+        const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
+          dataPackagesIds: ["ETH"],
+          authorizedSigners: getSignersForDataServiceId("redstone-main-demo"),
+        });
+
+        // Get ETH price
+        const priceData = await wrappedContract.getEthPrice();
+        const formattedPrice = Number(priceData) / 1e8; // Convert from 8 decimals
+        setEthPriceUSD(formattedPrice);
+      } catch (error) {
+        console.error("Error fetching ETH price:", error);
+      }
+    };
+
     fetchEthPrice();
     const interval = setInterval(fetchEthPrice, 30000);
     return () => clearInterval(interval);
@@ -97,10 +91,7 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
   // Update approval status
   useEffect(() => {
     if (marketplaceAddress) {
-      setIsApproved(
-        approvedAddress?.toLowerCase() === (marketplaceAddress as string).toLowerCase() ||
-          isApprovedForAll === true,
-      );
+      setIsApproved(approvedAddress?.toLowerCase() === (marketplaceAddress as string).toLowerCase() || isApprovedForAll === true);
     }
   }, [approvedAddress, isApprovedForAll, marketplaceAddress]);
 
@@ -225,11 +216,7 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
               <div className="stat p-4">
                 <div className="stat-title text-xs">Price</div>
                 <div className="stat-value text-lg">{parseFloat(priceInEth).toFixed(4)} ETH</div>
-                {ethPriceUSD > 0 && (
-                  <div className="stat-desc">
-                    ~${priceInUSD} USD
-                  </div>
-                )}
+                {ethPriceUSD > 0 && <div className="stat-desc">~${priceInUSD} USD</div>}
               </div>
             </div>
           )}
@@ -287,9 +274,7 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
               />
               {listPrice && ethPriceUSD > 0 && (
                 <label className="label">
-                  <span className="label-text-alt">
-                    ~${(parseFloat(listPrice) * ethPriceUSD).toFixed(2)} USD
-                  </span>
+                  <span className="label-text-alt">~${(parseFloat(listPrice) * ethPriceUSD).toFixed(2)} USD</span>
                 </label>
               )}
             </div>

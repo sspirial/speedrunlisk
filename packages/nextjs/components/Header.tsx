@@ -5,13 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import {
-  ShoppingCartIcon,
   Bars3Icon,
   BugAntIcon,
   CalendarIcon,
   CurrencyDollarIcon,
   HomeIcon,
   MagnifyingGlassIcon,
+  ShoppingCartIcon,
   SparklesIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -41,7 +41,7 @@ export const menuLinks: HeaderMenuLink[] = [
     icon: <CalendarIcon className="h-4 w-4" />,
   },
   {
-    label: "Marketplace",  // Add this entire object
+    label: "Marketplace", // Add this entire object
     href: "/marketplace",
     icon: <ShoppingCartIcon className="h-4 w-4" />,
   },
