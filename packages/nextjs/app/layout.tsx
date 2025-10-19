@@ -9,9 +9,9 @@ const baseUrl = process.env.VERCEL_URL
   : `http://localhost:${process.env.PORT || 3000}`;
 const imageUrl = `${baseUrl}/thumbnail.jpg`;
 
-const title = "Scaffold-Lisk App";
-const titleTemplate = "%s | Scaffold-Lisk";
-const description = "Built with 🏗 Scaffold-Lisk";
+const title = "Speedrunlisk Challenge";
+const titleTemplate = "%s | Speedrun-Lisk";
+const description = "A six week challenge to learn lisk blockhain smart contract development";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

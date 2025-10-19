@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import {
+  ShoppingCartIcon,
   Bars3Icon,
   BugAntIcon,
   CalendarIcon,
@@ -38,6 +39,11 @@ export const menuLinks: HeaderMenuLink[] = [
     label: "Events",
     href: "/events",
     icon: <CalendarIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Marketplace",  // Add this entire object
+    href: "/marketplace",
+    icon: <ShoppingCartIcon className="h-4 w-4" />,
   },
   {
     label: "Oracle",
