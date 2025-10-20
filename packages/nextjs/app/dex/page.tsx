@@ -35,10 +35,7 @@ const DEX: NextPage = () => {
       {/* Tab Selector */}
       <div className="flex justify-center mb-6">
         <div className="tabs tabs-boxed">
-          <button
-            className={`tab ${activeTab === "swap" ? "tab-active" : ""}`}
-            onClick={() => setActiveTab("swap")}
-          >
+          <button className={`tab ${activeTab === "swap" ? "tab-active" : ""}`} onClick={() => setActiveTab("swap")}>
             💱 Swap
           </button>
           <button
@@ -51,9 +48,7 @@ const DEX: NextPage = () => {
       </div>
 
       {/* Panel Content */}
-      <div className="flex justify-center">
-        {activeTab === "swap" ? <SwapPanel /> : <LiquidityPanel />}
-      </div>
+      <div className="flex justify-center">{activeTab === "swap" ? <SwapPanel /> : <LiquidityPanel />}</div>
     </div>
   );
 };

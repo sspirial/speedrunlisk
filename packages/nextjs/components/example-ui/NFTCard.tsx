@@ -66,7 +66,11 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
       try {
         // Create ethers provider and contract
         const provider = new ethers.providers.Web3Provider(window.ethereum as any);
-        const contract = new ethers.Contract(priceFeedContract.address, priceFeedContract.abi, provider);
+        const contract = new ethers.Contract(
+          priceFeedContract.address,
+          priceFeedContract.abi as ethers.ContractInterface,
+          provider,
+        );
 
         // Wrap contract with RedStone data
         const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
