@@ -95,7 +95,9 @@ export const NFTCard = ({ tokenId }: NFTCardProps) => {
   // Update approval status
   useEffect(() => {
     if (marketplaceAddress) {
-      setIsApproved(approvedAddress?.toLowerCase() === (marketplaceAddress as string).toLowerCase() || isApprovedForAll === true);
+      setIsApproved(
+        approvedAddress?.toLowerCase() === (marketplaceAddress as string).toLowerCase() || isApprovedForAll === true,
+      );
     }
   }, [approvedAddress, isApprovedForAll, marketplaceAddress]);
 

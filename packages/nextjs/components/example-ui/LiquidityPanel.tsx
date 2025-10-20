@@ -183,14 +183,8 @@ export const LiquidityPanel = () => {
   };
 
   // Calculate expected output for removing liquidity
-  const expectedA =
-    removeAmount && totalLiquidity > 0n
-      ? (parseUnits(removeAmount, 18) * reserveA) / totalLiquidity
-      : 0n;
-  const expectedB =
-    removeAmount && totalLiquidity > 0n
-      ? (parseUnits(removeAmount, 18) * reserveB) / totalLiquidity
-      : 0n;
+  const expectedA = removeAmount && totalLiquidity > 0n ? (parseUnits(removeAmount, 18) * reserveA) / totalLiquidity : 0n;
+  const expectedB = removeAmount && totalLiquidity > 0n ? (parseUnits(removeAmount, 18) * reserveB) / totalLiquidity : 0n;
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-4xl">

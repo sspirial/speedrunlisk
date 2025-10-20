@@ -171,8 +171,7 @@ export const SwapPanel = () => {
           <label className="label">
             <span className="label-text">From</span>
             <span className="label-text-alt">
-              Balance: {formatBalance(isTokenAInput ? balanceA : balanceB, isTokenAInput ? 18 : 6)}{" "}
-              {isTokenAInput ? symbolA : symbolB}
+              Balance: {formatBalance(isTokenAInput ? balanceA : balanceB, isTokenAInput ? 18 : 6)} {isTokenAInput ? symbolA : symbolB}
             </span>
           </label>
           <div className="input-group">
