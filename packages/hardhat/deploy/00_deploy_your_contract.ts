@@ -20,6 +20,14 @@ const deployContracts: DeployFunction = async function (hre: HardhatRuntimeEnvir
     log: true,
     autoMine: true,
   });
+
+  // Deploy SimpleUSDC
+  await deploy("SimpleUSDC", {
+    from: deployer,
+    args: [],
+    log: true,
+    autoMine: true,
+  });
 };
 
 export default deployContracts;
